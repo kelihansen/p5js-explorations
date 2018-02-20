@@ -87,8 +87,8 @@ function Component(size, colorH, colorS, colorL, speed) {
 }
 
 const defaultRain = new Rain(25, 183, 4, 62);
-const defaultSnow = new Snow(30, 183, 4, 86);
-const defaultClouds = new Clouds(10, 212, 79, 73);
+const defaultSnow = new Snow(60, 183, 4, 86);
+const defaultClouds = new Clouds(100, 212, 79, 73);
 
 let scene = defaultRain;
 
@@ -115,18 +115,15 @@ const dropdown = document.getElementById('choose');
 dropdown.addEventListener('input', function() {
     if (this.value === 'rain') {
         scene = defaultRain;
-        for (i = 0; i < scene.numOfComponents; i++) {
-            scene.collectComponents(5, 181, 100, 50, 8);
-        }
+        scene.components = [];
+        scene.collectComponents(5, 181, 100, 50, 8);
     } else if (this.value === 'snow') {
         scene = defaultSnow;
-        for (i = 0; i < scene.numOfComponents; i++) {
-            scene.collectComponents(10, 0, 10, 97, 4);
-        }
+        scene.components = [];        
+        scene.collectComponents(10, 0, 10, 97, 4);
     } else if (this.value === 'clouds') {
         scene = defaultClouds;
-        for (i = 0; i < scene.numOfComponents; i++) {
-            scene.collectComponents(150, 183, 4, 93, 1);
-        }
+        scene.components = [];        
+        scene.collectComponents(150, 183, 4, 93, 1);
     }  
 });
